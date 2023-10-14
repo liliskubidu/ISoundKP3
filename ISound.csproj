@@ -84,7 +84,8 @@
       <DependentUpon>FloorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Instruments\Instrument.cs" />
-    <Compile Include="Instruments\Kaossilator1XY.cs" />
+    <Compile Include="Instruments\KaossilatorXYBothHands.cs" />
+    <Compile Include="Instruments\KaossilatorXYLeftHand.cs" />
     <Compile Include="Instruments\KaossilatorXYLeftHandArpegiatorSpeedRightHand.cs" />
     <Compile Include="Instruments\KaossilatorXYRightHand.cs" />
     <Compile Include="Instruments\KaossilatorXYRandomProgram.cs" />

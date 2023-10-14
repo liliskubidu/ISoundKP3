@@ -100,36 +100,19 @@ namespace GesturalMusic
             lWristLocationLast = lWrist;
             rWristLocationLast = rWrist;
 
-            //********************************************** Y osa = vyska zapesti
+            //X
+            double leftMaxX = body.Joints[JointType.ShoulderLeft].Position.X - MainWindow.armLength + MainWindow.armLength * rightThreshold;
+            double rightMaxX = body.Joints[JointType.ShoulderLeft].Position.X - MainWindow.armLength * leftThreshold;
+            double posX = body.Joints[JointType.WristLeft].Position.X;
+            float percentageX = (float)Utils.Clamp(0, 1, (float)((posX - leftMaxX) / (rightMaxX - leftMaxX)));
 
+            //Y
+            double leftMaxY = body.Joints[JointType.ShoulderLeft].Position.Y - MainWindow.armLength + MainWindow.armLength * 0.1;
+            double rightMaxY = body.Joints[JointType.ShoulderLeft].Position.Y + MainWindow.armLength * 0.7;
+            double posY = body.Joints[JointType.WristLeft].Position.Y;
+            float percentageY = (float)Utils.Clamp(0, 1, (float)((posY - leftMaxY) / (rightMaxY - leftMaxY)));
 
-                //X
-                double leftMaxX = body.Joints[JointType.ShoulderRight].Position.X + MainWindow.armLength - MainWindow.armLength * rightThreshold;
-                double rightMaxX = body.Joints[JointType.ShoulderRight].Position.X + MainWindow.armLength * leftThreshold;
-                double posX = body.Joints[JointType.WristRight].Position.X;
-                float percentageX  =  (float)(1 - Utils.Clamp(0, 1, (float)((posX - leftMaxX) / (rightMaxX - leftMaxX))));
-
-                //Y
-                double leftMaxY = body.Joints[JointType.ShoulderRight].Position.Y - MainWindow.armLength + MainWindow.armLength * 0.1;
-                double rightMaxY = body.Joints[JointType.ShoulderRight].Position.Y + MainWindow.armLength * 0.7;
-                double posY = body.Joints[JointType.WristRight].Position.Y;
-                float percentageY = (float)Utils.Clamp(0, 1, (float)((posY - leftMaxY) / (rightMaxY - leftMaxY)));
-
-                
-
-                //X
-                double leftMaxX2 = body.Joints[JointType.ShoulderLeft].Position.X - MainWindow.armLength + MainWindow.armLength * rightThreshold;
-                double rightMaxX2 = body.Joints[JointType.ShoulderLeft].Position.X - MainWindow.armLength * leftThreshold;
-                double posX2 = body.Joints[JointType.WristLeft].Position.X;
-                float percentageX2 = (float)Utils.Clamp(0, 1, (float)((posX2 - leftMaxX2) / (rightMaxX2 - leftMaxX2)));
-
-                //Y
-                double leftMaxY2 = body.Joints[JointType.ShoulderLeft].Position.Y - MainWindow.armLength + MainWindow.armLength * 0.1;
-                double rightMaxY2 = body.Joints[JointType.ShoulderLeft].Position.Y + MainWindow.armLength * 0.7;
-                double posY2 = body.Joints[JointType.WristLeft].Position.Y;
-                float percentageY2 = (float)Utils.Clamp(0, 1, (float)((posY2 - leftMaxY2) / (rightMaxY2 - leftMaxY2)));
-
-                PlaySound(lWristVelocity, Math.Abs(percentageX) > Math.Abs(percentageX2) ? 1 - Math.Abs(percentageX) : 1 - Math.Abs(percentageX2), Math.Abs(percentageY) > Math.Abs(percentageY2) ? Math.Abs(percentageY) : Math.Abs(percentageY2));
+            PlaySound(lWristVelocity, 1 - Math.Abs(percentageX), percentageY);
 
             return false;
         }
