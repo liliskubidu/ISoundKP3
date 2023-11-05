@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Instruments\Instrument.cs" />
     <Compile Include="Instruments\KaossilatorXYBothHands.cs" />
+    <Compile Include="Instruments\KaossilatorXYBothHandsArpSpeedLowToHigh.cs" />
     <Compile Include="Instruments\KaossilatorXYLeftHand.cs" />
     <Compile Include="Instruments\KaossilatorXYLeftHandArpegiatorSpeedRightHand.cs" />
     <Compile Include="Instruments\KaossilatorXYRightHand.cs" />
