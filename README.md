@@ -13,3 +13,5 @@ This project requires the following:
 * Korg Kaossilator Pro +
 
 
+very basic test...
+https://www.youtube.com/watch?v=XPzzkp6bpn0
